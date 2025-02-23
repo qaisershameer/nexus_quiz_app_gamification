@@ -27,6 +27,7 @@ flutter:
   assets:
    - assets/
    - assets/images/
+   - assets/images/banks/
    - assets/sound/
 
   # fonts:

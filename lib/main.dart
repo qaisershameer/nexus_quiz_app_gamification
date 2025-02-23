@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nexus_quiz_app/screens/start_screen.dart';
-import 'package:nexus_quiz_app/screens/question_screen.dart';
+import 'screens/start_screen.dart';
+import 'screens/question_screen.dart';
+import 'topics/my_list_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,7 +40,8 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: screenWidget,
+      // home: screenWidget,
+      home: const MyListView(),
     );
   }
 }
