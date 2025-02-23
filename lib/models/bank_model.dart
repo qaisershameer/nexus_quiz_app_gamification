@@ -1,7 +1,5 @@
-class BankModel{
-  final String bankName;
-  final String image;
-
-  const BankModel(this.bankName, this.image);
-
+class BankModel {
+  String bankName;
+  String image;
+  BankModel({required this.bankName, required this.image});
 }

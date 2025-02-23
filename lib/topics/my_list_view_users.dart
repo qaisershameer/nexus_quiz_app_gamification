@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:nexus_quiz_app/data/bank_data.dart';
-import '../models/bank_model.dart';
+import 'package:nexus_quiz_app/data/user_data.dart';
+import '../models/user_model.dart';
 
-class MyListView extends StatefulWidget {
-  const MyListView({super.key});
+class MyListViewUsers extends StatefulWidget {
+  const MyListViewUsers({super.key});
 
   @override
-  State<MyListView> createState() => _MyListViewState();
+  State<MyListViewUsers> createState() => _MyListViewUsersState();
 }
 
-class _MyListViewState extends State<MyListView> {
+class _MyListViewUsersState extends State<MyListViewUsers> {
   List<String> names = ['Ali', 'Abrar', 'Ahmad', 'Ayan', 'Hamza', 'Kamil'];
 
   @override
@@ -25,13 +26,13 @@ class _MyListViewState extends State<MyListView> {
           SizedBox(
             height: 120,
             child: ListView.builder(
-              itemCount: banks.length,
+              itemCount: users.length,
               scrollDirection: Axis.horizontal,
               // reverse: true,
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                // Access the bank data from the 'banks' list
-                BankModel bank = banks[index];
+                // Access the bank data from the 'users' list
+                UserModel user = users[index];
 
                 return Column(
                   children: [
@@ -49,7 +50,7 @@ class _MyListViewState extends State<MyListView> {
                       child: Center(
                         child: ClipOval(
                           child: Image.asset(
-                            bank.image,
+                            user.image,
                             height: 70,
                             width: 70,
                             fit: BoxFit.cover,
@@ -59,7 +60,7 @@ class _MyListViewState extends State<MyListView> {
                     ),
                     Center(
                       child: Text(
-                        bank.bankName,
+                        user.username,
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
@@ -73,15 +74,15 @@ class _MyListViewState extends State<MyListView> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: banks.length,
+              itemCount: users.length,
               scrollDirection: Axis.vertical,
               // reverse: true,
               shrinkWrap: true,
               physics: BouncingScrollPhysics(),
               itemBuilder: (context, index) {
 
-                // Access the bank data from the 'banks' list
-                BankModel bank = banks[index];
+                // Access the bank data from the 'users' list
+                UserModel user = users[index];
 
                 return Column(
                   children: [
@@ -110,7 +111,7 @@ class _MyListViewState extends State<MyListView> {
                             ),
                             child: ClipOval(
                               child: Image.asset(
-                                bank.image,
+                                user.image,
                                 height: 85,
                                 width: 85,
                                 fit: BoxFit.cover,
@@ -118,7 +119,7 @@ class _MyListViewState extends State<MyListView> {
                             ),
                           ),
                           Text(
-                            bank.bankName,
+                            user.password,
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,

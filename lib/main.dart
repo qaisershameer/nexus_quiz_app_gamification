@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:nexus_quiz_app/topics/my_grid_view.dart';
 import 'screens/start_screen.dart';
 import 'screens/question_screen.dart';
 import 'topics/my_list_view.dart';
+import 'topics/my_list_view_users.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +33,12 @@ class _MyAppState extends State<MyApp> {
 
     if (activeScreen == 'question-screen') {
       screenWidget = QuestionScreen();
+    } else if (activeScreen == 'banks-screen') {
+      screenWidget = MyListView();
+    } else if (activeScreen == 'users-screen') {
+      screenWidget = MyListViewUsers();
+    } else if (activeScreen == 'grid-screen') {
+      screenWidget = MyGridView();
     }
 
     return MaterialApp(
@@ -41,7 +49,8 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       // home: screenWidget,
-      home: const MyListView(),
+      // home: const MyListView(),
+      home: const MyListViewUsers(),
     );
   }
 }

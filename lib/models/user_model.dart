@@ -1,20 +1,24 @@
 class UserModel {
-  final Map<String, dynamic> address;
-  final int id;
-  final String email;
-  final String username;
-  final String password;
-  final Map<String, String> name;
-  final String phone;
-  final int v;
+  Map<String, dynamic> address;
+  int id;
+  String email;
+  String username;
+  String password;
+  Map<String, String> name;
+  String phone;
+  String image;
+  int v;
 
-  const UserModel(
-      this.address,
-      this.id,
-      this.email,
-      this.username,
-      this.password,
-      this.name,
-      this.phone,
-      this.v);
+  UserModel(
+      {
+        required this.address,
+        required this.id,
+        required this.email,
+        required this.username,
+        required this.password,
+        required this.name,
+        required this.phone,
+        required this.image,
+        required this.v
+      });
 }

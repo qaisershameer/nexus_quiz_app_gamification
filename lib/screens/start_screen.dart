@@ -20,7 +20,7 @@ class StartScreen extends StatelessWidget {
         children: [
           // Logo
           Image.asset(
-            'assets/images/quiz_logo.png',
+            'assets/images/animals/quiz_logo.png',
             width: 300,
           ),
           const SizedBox(
@@ -53,6 +53,49 @@ class StartScreen extends StatelessWidget {
                 // screen switching
                 startQuiz,
           ),
+
+          OutlinedButton.icon(
+            icon: const Icon(Icons.arrow_forward),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: Colors.white,
+            ),
+            label: Text(
+              'View Banks',
+              style: GoogleFonts.lato(),
+            ),
+            onPressed:
+            // screen switching
+            startQuiz,
+          ),
+
+          OutlinedButton.icon(
+            icon: const Icon(Icons.arrow_forward),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: Colors.white,
+            ),
+            label: Text(
+              'View Users',
+              style: GoogleFonts.lato(),
+            ),
+            onPressed:
+            // screen switching
+            startQuiz,
+          ),
+
+          OutlinedButton.icon(
+            icon: const Icon(Icons.arrow_forward),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: Colors.white,
+            ),
+            label: Text(
+              'View Grid',
+              style: GoogleFonts.lato(),
+            ),
+            onPressed:
+            // screen switching
+            startQuiz,
+          ),
+
         ],
       ),
     );

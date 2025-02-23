@@ -6,10 +6,10 @@ const List<QuizQuestion> questions = [
       'What animal makes this sound?',
       ['Cat', 'Dog', 'Rabbit', 'Rat'],
       [
-        'assets/images/cat.jpg',
-        'assets/images/dog.jpg',
-        'assets/images/rabbit.jpg',
-        'assets/images/rat.jpg'
+        'assets/images/animals/cat.jpg',
+        'assets/images/animals/dog.jpg',
+        'assets/images/animals/rabbit.jpg',
+        'assets/images/animals/rat.jpg'
       ],
       'assets/sound/cat_sound.mp3',
       'Cat'
@@ -19,10 +19,10 @@ const List<QuizQuestion> questions = [
       'What animal makes this sound?',
       ['Cat', 'Dog', 'Rabbit', 'Owl'],
       [
-        'assets/images/cat.jpg',
-        'assets/images/dog.jpg',
-        'assets/images/rabbit.jpg',
-        'assets/images/owl.jpg'
+        'assets/images/animals/cat.jpg',
+        'assets/images/animals/dog.jpg',
+        'assets/images/animals/rabbit.jpg',
+        'assets/images/animals/owl.jpg'
       ],
       'assets/sound/owl.mp3',
       'Owl'
@@ -32,10 +32,10 @@ const List<QuizQuestion> questions = [
       'What animal makes this sound?',
       ['Cat', 'Dog', 'Rabbit', 'Squirrel'],
       [
-        'assets/images/cat.jpg',
-        'assets/images/dog.jpg',
-        'assets/images/rabbit.jpg',
-        'assets/images/squirrel.jpg'
+        'assets/images/animals/cat.jpg',
+        'assets/images/animals/dog.jpg',
+        'assets/images/animals/rabbit.jpg',
+        'assets/images/animals/squirrel.jpg'
       ],
       'assets/sound/rabbit.mp3',
       'Rabbit'
@@ -45,10 +45,10 @@ const List<QuizQuestion> questions = [
       'What animal makes this sound?',
       ['Squirrel', 'Dog', 'Lion', 'Bear'],
       [
-        'assets/images/squirrel.jpg',
-        'assets/images/dog.jpg',
-        'assets/images/lion.jpg',
-        'assets/images/bear.jpg'
+        'assets/images/animals/squirrel.jpg',
+        'assets/images/animals/dog.jpg',
+        'assets/images/animals/lion.jpg',
+        'assets/images/animals/bear.jpg'
       ],
       'assets/sound/squirrel.mp3',
       'Squirrel'
@@ -59,10 +59,10 @@ const List<QuizQuestion> questions = [
       'What animal makes this sound?',
       ['Cat', 'Dog', 'Bear', 'Lion'],
       [
-        'assets/images/cat.jpg',
-        'assets/images/dog.jpg',
-        'assets/images/bear.jpg',
-        'assets/images/lion.jpg'
+        'assets/images/animals/cat.jpg',
+        'assets/images/animals/dog.jpg',
+        'assets/images/animals/bear.jpg',
+        'assets/images/animals/lion.jpg'
       ],
       'assets/sound/dog_sound.mp3',
       'Dog'
@@ -72,10 +72,10 @@ const List<QuizQuestion> questions = [
       'What animal makes this sound?',
       ['Lion', 'Eagle', 'Sparrow', 'Bear'],
       [
-        'assets/images/lion.jpg',
-        'assets/images/eagle.jpg',
-        'assets/images/sparrow.jpg',
-        'assets/images/bear.jpg'
+        'assets/images/animals/lion.jpg',
+        'assets/images/animals/eagle.jpg',
+        'assets/images/animals/sparrow.jpg',
+        'assets/images/animals/bear.jpg'
       ],
       'assets/sound/lion_sound.mp3',
       'Lion'
@@ -85,10 +85,10 @@ const List<QuizQuestion> questions = [
       'What animal makes this sound?',
       ['Bear', 'Cat', 'Rabbit', 'Parrot'],
       [
-        'assets/images/bear.jpg',
-        'assets/images/cat.jpg',
-        'assets/images/rabbit.jpg',
-        'assets/images/parrot.jpg'
+        'assets/images/animals/bear.jpg',
+        'assets/images/animals/cat.jpg',
+        'assets/images/animals/rabbit.jpg',
+        'assets/images/animals/parrot.jpg'
       ],
       'assets/sound/bear_sound.mp3',
       'Bear'
@@ -98,10 +98,10 @@ const List<QuizQuestion> questions = [
       'What animal makes this sound?',
       ['Parrot', 'Eagle', 'Lion', 'Dog'],
       [
-        'assets/images/parrot.jpg',
-        'assets/images/eagle.jpg',
-        'assets/images/lion.jpg',
-        'assets/images/dog.jpg'
+        'assets/images/animals/parrot.jpg',
+        'assets/images/animals/eagle.jpg',
+        'assets/images/animals/lion.jpg',
+        'assets/images/animals/dog.jpg'
       ],
       'assets/sound/parrot_sound.mp3',
       'Parrot'
@@ -111,12 +111,12 @@ const List<QuizQuestion> questions = [
       'What animal makes this sound?',
       ['Eagle', 'Rabbit', 'Sparrow', 'Bear'],
       [
-        'assets/images/eagle.jpg',
-        'assets/images/rabbit.jpg',
-        'assets/images/sparrow.jpg',
-        'assets/images/bear.jpg'
+        'assets/images/animals/eagle.jpg',
+        'assets/images/animals/rabbit.jpg',
+        'assets/images/animals/sparrow.jpg',
+        'assets/images/animals/bear.jpg'
       ],
-      'assets/sound/eagle_sound.mp3',
+      'assets/sound/animals/eagle_sound.mp3',
       'Eagle'
   ),
   // Question 10: Sparrow Sound
@@ -124,10 +124,10 @@ const List<QuizQuestion> questions = [
       'What animal makes this sound?',
       ['Sparrow', 'Rat', 'Lion', 'Cat'],
       [
-        'assets/images/sparrow.jpg',
-        'assets/images/rat.jpg',
-        'assets/images/lion.jpg',
-        'assets/images/cat.jpg'
+        'assets/images/animals/sparrow.jpg',
+        'assets/images/animals/rat.jpg',
+        'assets/images/animals/lion.jpg',
+        'assets/images/animals/cat.jpg'
       ],
       'assets/sound/sparrow_sound.mp3',
       'Sparrow'
