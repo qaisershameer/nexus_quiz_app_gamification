@@ -30,6 +30,7 @@ class _MyListViewState extends State<MyListView> {
               // reverse: true,
               shrinkWrap: true,
               itemBuilder: (context, index) {
+
                 // Access the bank data from the 'banks' list
                 BankModel bank = banks[index];
 

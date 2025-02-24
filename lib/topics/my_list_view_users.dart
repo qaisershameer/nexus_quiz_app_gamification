@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nexus_quiz_app/data/bank_data.dart';
-import 'package:nexus_quiz_app/data/user_data.dart';
+import '../data/user_data.dart';
 import '../models/user_model.dart';
 
 class MyListViewUsers extends StatefulWidget {
@@ -12,8 +11,6 @@ class MyListViewUsers extends StatefulWidget {
 }
 
 class _MyListViewUsersState extends State<MyListViewUsers> {
-  List<String> names = ['Ali', 'Abrar', 'Ahmad', 'Ayan', 'Hamza', 'Kamil'];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +86,8 @@ class _MyListViewUsersState extends State<MyListViewUsers> {
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
-                // Access the bank data from the 'users' list
+
+                // Access the user data from the 'users' list
                 UserModel user = users[index];
 
                 return Column(
