@@ -32,13 +32,13 @@ class _MyAppState extends State<MyApp> {
     );
 
     if (activeScreen == 'question-screen') {
-      screenWidget = QuestionScreen();
+      screenWidget = const QuestionScreen();
     } else if (activeScreen == 'banks-screen') {
-      screenWidget = MyListView();
+      screenWidget = const MyListView();
     } else if (activeScreen == 'users-screen') {
-      screenWidget = MyListViewUsers();
+      screenWidget = const MyListViewUsers();
     } else if (activeScreen == 'grid-screen') {
-      screenWidget = MyGridView();
+      screenWidget = const MyGridView();
     }
 
     return MaterialApp(

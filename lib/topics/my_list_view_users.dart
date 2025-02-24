@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nexus_quiz_app/data/bank_data.dart';
 import 'package:nexus_quiz_app/data/user_data.dart';
 import '../models/user_model.dart';
@@ -17,12 +18,19 @@ class _MyListViewUsersState extends State<MyListViewUsers> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('List View Builder'),
+        title: const Text('List View Builder'),
         backgroundColor: Colors.orange.shade200,
       ),
       body: Column(
         children: [
-          Text('List View Builder'),
+          Text(
+            'List View Builder',
+            style: GoogleFonts.lato(
+              color: Colors.deepOrangeAccent,
+              fontSize: 24,
+              decoration: TextDecoration.none,
+            ),
+          ),
           SizedBox(
             height: 120,
             child: ListView.builder(
@@ -37,7 +45,7 @@ class _MyListViewUsersState extends State<MyListViewUsers> {
                 return Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.symmetric(
+                      margin: const EdgeInsets.symmetric(
                         horizontal: 8.0,
                         vertical: 8.0,
                       ),
@@ -45,7 +53,7 @@ class _MyListViewUsersState extends State<MyListViewUsers> {
                       width: 75,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.orange.shade200,
+                        color: Colors.teal.shade500,
                       ),
                       child: Center(
                         child: ClipOval(
@@ -61,9 +69,10 @@ class _MyListViewUsersState extends State<MyListViewUsers> {
                     Center(
                       child: Text(
                         user.username,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
+                        style: GoogleFonts.lato(
+                          color: Colors.deepPurple,
+                          fontSize: 16,
+                          decoration: TextDecoration.none,
                         ),
                       ),
                     ),
@@ -78,36 +87,41 @@ class _MyListViewUsersState extends State<MyListViewUsers> {
               scrollDirection: Axis.vertical,
               // reverse: true,
               shrinkWrap: true,
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
-
                 // Access the bank data from the 'users' list
                 UserModel user = users[index];
 
                 return Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.symmetric(
+                      margin: const EdgeInsets.symmetric(
                         horizontal: 8.0,
                         vertical: 8.0,
                       ),
-                      height: 100,
+                      height: 275,
                       width: MediaQuery.sizeOf(context).width,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(70),
                             bottomRight: Radius.circular(70)),
-                        color: index.isEven
-                            ? Colors.green.shade100
-                            : Colors.orange.shade100,
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Colors.green, Colors.yellow],
+                        ),
+                        // color: index.isEven
+                        //     ? Colors.green.shade100
+                        //     : Colors.orange.shade100,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            margin: EdgeInsets.symmetric(
-                              horizontal: 24.0,
+                            margin: const EdgeInsets.symmetric(
+                              horizontal: 16.0,
+                              vertical: 16.0,
                             ),
                             child: ClipOval(
                               child: Image.asset(
@@ -118,11 +132,23 @@ class _MyListViewUsersState extends State<MyListViewUsers> {
                               ),
                             ),
                           ),
-                          Text(
-                            user.password,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                          Expanded(
+                            child: Text(
+                              '''\nUser ID: ${user.id}
+Email: ${user.email}
+User Name: ${user.username}
+Password: ${user.password}
+Phone: ${user.phone}\n
+Address:\n${user.address['city']} - ${user.address['street']} - ${user.address['number']}\n
+Location:
+ Latitude: ${user.address['geolocation']['lat']}\n Longitude: ${user.address['geolocation']['long']}
+''',
+                              style: GoogleFonts.lato(
+                                color: Colors.black87,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                                decoration: TextDecoration.none,
+                              ),
                             ),
                           ),
                         ],
