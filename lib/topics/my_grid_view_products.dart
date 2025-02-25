@@ -15,7 +15,10 @@ class _MyGridViewProductsState extends State<MyGridViewProducts> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Grid View : BUILDER LAYOUT', style: GoogleFonts.lato(),),
+        title: Text(
+          'Grid View : BUILDER LAYOUT',
+          style: GoogleFonts.lato(),
+        ),
         backgroundColor: Colors.deepPurple.shade200,
         centerTitle: true,
       ),
@@ -32,7 +35,7 @@ class _MyGridViewProductsState extends State<MyGridViewProducts> {
             ),
 
             GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 8.0,
                 mainAxisSpacing: 8.0,
@@ -41,33 +44,31 @@ class _MyGridViewProductsState extends State<MyGridViewProducts> {
               shrinkWrap: true,
               itemCount: products.length,
               itemBuilder: (context, index) {
-
                 // Product data
                 ProductModel product = products[index];
 
                 return Container(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [Colors.orangeAccent, Colors.blueAccent],
                     ),
                     borderRadius: BorderRadius.circular(12),
                   ),
-
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-
-                          Text(
-                            product.title,
-                            style: GoogleFonts.lato(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.deepPurple,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CircleAvatar(
+                            radius: 20,
+                            backgroundImage: NetworkImage(
+                              product.image,
+                              scale: 0.25,
                             ),
-                            maxLines: 2,
                           ),
 
                           // Product Price
@@ -76,9 +77,21 @@ class _MyGridViewProductsState extends State<MyGridViewProducts> {
                             style: GoogleFonts.lato(
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
-                              color: Colors.teal,
+                              color: Colors.teal.shade800,
                             ),
                           ),
+                        ],
+                      ),
+
+                      Text(
+                        product.title,
+                        style: GoogleFonts.lato(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.deepPurple,
+                        ),
+                        maxLines: 2,
+                      ),
 
                       // Product Description
                       Expanded(
