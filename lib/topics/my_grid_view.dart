@@ -16,7 +16,7 @@ class _MyGridViewState extends State<MyGridView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Grid View : Count Layout'),
+        title: const Text('Grid View : Count Layout'),
         backgroundColor: Colors.deepPurple.shade200,
       ),
       body: SingleChildScrollView(
@@ -24,7 +24,7 @@ class _MyGridViewState extends State<MyGridView> {
           children: [
 
             // Total Screen Width use Fixed No of Columns
-            Text(
+            const Text(
               'GRID VIEW : COUNT MODE',
               style: TextStyle(
                 fontSize: 25,
@@ -51,10 +51,10 @@ class _MyGridViewState extends State<MyGridView> {
               ],
             ),
 
-            SizedBox(height: 16.0,),
+            const SizedBox(height: 16.0,),
 
             // Total Screen Width / Extent Pixels Property
-            Text(
+            const Text(
               'GRID VIEW : EXTENT MODE',
               style: TextStyle(
                 fontSize: 25,
@@ -80,10 +80,10 @@ class _MyGridViewState extends State<MyGridView> {
               ],
             ),
 
-            SizedBox(height: 16.0,),
+            const SizedBox(height: 16.0,),
 
             // GRID VIEW BUILDER : used to represent dynamic data load.
-            Text(
+            const Text(
               'GRID VIEW : BUILDER MODE',
               style: TextStyle(
                 fontSize: 25,
@@ -92,13 +92,13 @@ class _MyGridViewState extends State<MyGridView> {
             ),
 
             GridView.builder(
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 75, crossAxisSpacing: 8.0, mainAxisSpacing: 8.0,),
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 75, crossAxisSpacing: 8.0, mainAxisSpacing: 8.0,),
               physics: const ScrollPhysics(),
               shrinkWrap: true ,
               itemCount: colors.length,
               itemBuilder: (context, index) {
                 return Container(decoration: BoxDecoration(color: colors[index], borderRadius: BorderRadius.circular(16)),
-                child: Center(child: Text(index.toString(), style: TextStyle(color: Colors.white, fontSize: 18,),),),);
+                child: Center(child: Text(index.toString(), style: const TextStyle(color: Colors.white, fontSize: 18,),),),);
               },
             ),
             

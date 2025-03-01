@@ -12,7 +12,7 @@ class _MyListViewSeparatedState extends State<MyListViewSeparated> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('List View Separated'),
+        title: const Text('List View Separated'),
         backgroundColor: Colors.orange.shade200,
       ),
       body: ListView.separated(
@@ -28,11 +28,11 @@ class _MyListViewSeparatedState extends State<MyListViewSeparated> {
               ),
               radius: 30,
             ),
-            trailing: Icon(Icons.settings),
+            trailing: const Icon(Icons.settings),
           );
         },
         separatorBuilder: (context, index) {
-          return Divider(
+          return const Divider(
             color: Colors.red,
             thickness: 3,
           );

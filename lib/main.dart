@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:nexus_quiz_app/topics/my_grid_view_products.dart';
-import 'package:nexus_quiz_app/topics/my_list_view_separated.dart';
-import '../topics/my_grid_view.dart';
+
 import '../screens/start_screen.dart';
 import '../screens/question_screen.dart';
+
+import '../topics/my_animated_opacity.dart';
+import '../topics/my_animated_controller.dart';
+
+import '../topics/my_grid_view.dart';
+import '../topics/my_grid_view_products.dart';
+
 import '../topics/my_list_view.dart';
 import '../topics/my_list_view_users.dart';
+import '../topics/my_list_view_separated.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -35,15 +42,25 @@ class _MyAppState extends State<MyApp> {
 
     if (activeScreen == 'question-screen') {
       screenWidget = QuestionScreen();
-    } else if (activeScreen == 'grid-screen') {
+    }
+
+    if (activeScreen == 'grid-screen') {
       screenWidget = MyGridView();
-    } else if (activeScreen == 'grid-screen-products') {
+    }
+
+    if (activeScreen == 'grid-screen-products') {
       screenWidget = const MyGridViewProducts();
-    } else if (activeScreen == 'list-screen') {
+    }
+
+    if (activeScreen == 'list-screen') {
       screenWidget = MyListView();
-    } else if (activeScreen == 'list-screen-separated') {
+    }
+
+    if (activeScreen == 'list-screen-separated') {
       screenWidget = MyListViewSeparated();
-    } else if (activeScreen == 'list-screen-users') {
+    }
+
+    if (activeScreen == 'list-screen-users') {
       screenWidget = MyListViewUsers();
     }
 
@@ -55,8 +72,10 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       // home: screenWidget,
+      // home: const MyAnimatedController(),
+      home: const MyAnimatedOpacity(),
       // home: const MyGridView(),
-      home: const MyGridViewProducts(),
+      // home: const MyGridViewProducts(),
       // home: const MyListView(),
       // home: const MyListViewUsers(),
       // home: const MyListViewSeparated(),

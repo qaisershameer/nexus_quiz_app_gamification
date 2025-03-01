@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({super.key});
+class MyAnimatedController extends StatefulWidget {
+  const MyAnimatedController({super.key});
+
   @override
-  State<QuestionScreen> createState() => _QuestionScreenState();
+  State<MyAnimatedController> createState() => _MyAnimatedControllerState();
 }
 
-class _QuestionScreenState extends State<QuestionScreen> {
+class _MyAnimatedControllerState extends State<MyAnimatedController> {
   bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Question Screen - Animation Effects'),
+        title: const Text('Animation - Animated Controller'),
         backgroundColor: Colors.orange.shade200,
       ),
       body: Container(
