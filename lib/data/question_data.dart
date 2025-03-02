@@ -11,7 +11,7 @@ const List<QuizQuestion> questions = [
         'assets/images/animals/rabbit.jpg',
         'assets/images/animals/rat.jpg'
       ],
-      'assets/sound/cat_sound.mp3',
+      'sound/cat_sound.mp3',
       'Cat'
   ),
   // Question 2: Owl Sound
@@ -24,7 +24,7 @@ const List<QuizQuestion> questions = [
         'assets/images/animals/rabbit.jpg',
         'assets/images/animals/owl.jpg'
       ],
-      'assets/sound/owl.mp3',
+      'sound/owl.mp3',
       'Owl'
   ),
   // Question 3: Rabbit Sound
@@ -37,7 +37,7 @@ const List<QuizQuestion> questions = [
         'assets/images/animals/rabbit.jpg',
         'assets/images/animals/squirrel.jpg'
       ],
-      'assets/sound/rabbit.mp3',
+      'sound/rabbit.mp3',
       'Rabbit'
   ),
   // Question 4: Squirrel Sound
@@ -50,7 +50,7 @@ const List<QuizQuestion> questions = [
         'assets/images/animals/lion.jpg',
         'assets/images/animals/bear.jpg'
       ],
-      'assets/sound/squirrel.mp3',
+      'sound/squirrel.mp3',
       'Squirrel'
   ),
   // Additional questions
@@ -64,7 +64,7 @@ const List<QuizQuestion> questions = [
         'assets/images/animals/bear.jpg',
         'assets/images/animals/lion.jpg'
       ],
-      'assets/sound/dog_sound.mp3',
+      'sound/dog_sound.mp3',
       'Dog'
   ),
   // Question 6: Lion Sound
@@ -77,7 +77,7 @@ const List<QuizQuestion> questions = [
         'assets/images/animals/sparrow.jpg',
         'assets/images/animals/bear.jpg'
       ],
-      'assets/sound/lion_sound.mp3',
+      'sound/lion_sound.mp3',
       'Lion'
   ),
   // Question 7: Bear Sound
@@ -90,7 +90,7 @@ const List<QuizQuestion> questions = [
         'assets/images/animals/rabbit.jpg',
         'assets/images/animals/parrot.jpg'
       ],
-      'assets/sound/bear_sound.mp3',
+      'sound/bear_sound.mp3',
       'Bear'
   ),
   // Question 8: Parrot Sound
@@ -103,7 +103,7 @@ const List<QuizQuestion> questions = [
         'assets/images/animals/lion.jpg',
         'assets/images/animals/dog.jpg'
       ],
-      'assets/sound/parrot_sound.mp3',
+      'sound/parrot_sound.mp3',
       'Parrot'
   ),
   // Question 9: Eagle Sound
@@ -116,7 +116,7 @@ const List<QuizQuestion> questions = [
         'assets/images/animals/sparrow.jpg',
         'assets/images/animals/bear.jpg'
       ],
-      'assets/sound/animals/eagle_sound.mp3',
+      'sound/animals/eagle_sound.mp3',
       'Eagle'
   ),
   // Question 10: Sparrow Sound
@@ -129,7 +129,7 @@ const List<QuizQuestion> questions = [
         'assets/images/animals/lion.jpg',
         'assets/images/animals/cat.jpg'
       ],
-      'assets/sound/sparrow_sound.mp3',
+      'sound/sparrow_sound.mp3',
       'Sparrow'
   ),
 ];

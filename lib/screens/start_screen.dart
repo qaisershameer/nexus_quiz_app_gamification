@@ -54,48 +54,6 @@ class StartScreen extends StatelessWidget {
                 startQuiz,
           ),
 
-          OutlinedButton.icon(
-            icon: const Icon(Icons.arrow_forward),
-            style: OutlinedButton.styleFrom(
-              foregroundColor: Colors.white,
-            ),
-            label: Text(
-              'View Banks',
-              style: GoogleFonts.lato(),
-            ),
-            onPressed:
-            // screen switching
-            startQuiz,
-          ),
-
-          OutlinedButton.icon(
-            icon: const Icon(Icons.arrow_forward),
-            style: OutlinedButton.styleFrom(
-              foregroundColor: Colors.white,
-            ),
-            label: Text(
-              'View Users',
-              style: GoogleFonts.lato(),
-            ),
-            onPressed:
-            // screen switching
-            startQuiz,
-          ),
-
-          OutlinedButton.icon(
-            icon: const Icon(Icons.arrow_forward),
-            style: OutlinedButton.styleFrom(
-              foregroundColor: Colors.white,
-            ),
-            label: Text(
-              'View Grid',
-              style: GoogleFonts.lato(),
-            ),
-            onPressed:
-            // screen switching
-            startQuiz,
-          ),
-
         ],
       ),
     );

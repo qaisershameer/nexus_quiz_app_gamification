@@ -1,25 +1,96 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nexus_quiz_app/data/question_data.dart';
+import 'package:nexus_quiz_app/models/question_model.dart';
 
 class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({super.key});
+  const QuestionScreen({super.key, required this.onSelectAnswer});
+  final void Function(String answer) onSelectAnswer;
+
   @override
   State<QuestionScreen> createState() => _QuestionScreenState();
 }
 
-class _QuestionScreenState extends State<QuestionScreen> {
-  bool isExpanded = false;
+class _QuestionScreenState extends State<QuestionScreen> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
+  int currentQuestionIndex = 0;
+  bool isPlaying = false;
+  final AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    )..addListener(() {
+        setState(() {});
+      });
+
+    _scaleAnimation = Tween<double>(begin: 0.6, end: 1.2)
+        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+  }
+
+  @override
+  void dispose() {
+    _audioPlayer.dispose();
+    _controller.dispose();
+    super.dispose();
+
+  }
+
+  void playAudio({required String audioPath}) async {
+    if (isPlaying) {
+      // isPlaying true
+      await _audioPlayer.stop();
+      _controller.stop();
+      setState(() {
+        isPlaying = false;
+      });
+    } else {
+      // isPlaying false
+      try {
+        await _audioPlayer.setSource(AssetSource(audioPath));
+        await _audioPlayer.resume();
+        _controller.repeat(reverse: true);
+        setState(() {
+          isPlaying = true;
+        });
+
+        _audioPlayer.onPlayerComplete.listen((event){
+          _controller.stop();
+          setState(() {
+            isPlaying = false;
+          });
+        });
+
+      } catch (e) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text('Cannot Playing Audio.')));
+        print(e);
+      }
+    }
+  }
+
+  void answerQuestion(String selectedAnswer) {
+    widget.onSelectAnswer(selectedAnswer); 
+    if(currentQuestionIndex < questions.length-1) {
+      setState(() {
+      currentQuestionIndex++;
+    });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final QuizQuestion currentQuestion = questions[currentQuestionIndex];
+
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Question Screen - Animation Effects'),
-        backgroundColor: Colors.orange.shade200,
-      ),
       body: Container(
-        margin: const EdgeInsets.all(8.0),
-        padding: const EdgeInsets.all(8.0),
+        width: MediaQuery.sizeOf(context).width,
+        // height: MediaQuery.sizeOf(context).height,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
@@ -27,103 +98,95 @@ class _QuestionScreenState extends State<QuestionScreen> {
             colors: [Colors.green, Colors.yellow],
           ),
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AnimatedContainer(
-                    duration: const Duration(seconds: 3),
-                    curve: Curves.fastEaseInToSlowEaseOut,
-                    height: isExpanded ? 200 : 100,
-                    width: isExpanded ? 150 : 50,
-                    color: isExpanded ? Colors.green : Colors.deepPurple,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                Text(
+                  currentQuestion.text,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.lato(
+                    color: Colors.white,
+                    fontSize: 20,
+                    decoration: TextDecoration.none,
                   ),
-                  const SizedBox(
-                    width: 8.0,
-                  ),
-                  AnimatedContainer(
-                    duration: const Duration(seconds: 3),
-                    curve: Curves.easeInOut,
-                    height: isExpanded ? 200 : 100,
-                    width: isExpanded ? 150 : 50,
-                    color: isExpanded ? Colors.yellow : Colors.teal,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 8.0,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AnimatedContainer(
-                    duration: const Duration(seconds: 3),
-                    curve: Curves.bounceInOut,
-                    height: isExpanded ? 200 : 100,
-                    width: isExpanded ? 150 : 50,
-                    color: isExpanded ? Colors.red : Colors.black,
-                  ),
-                  const SizedBox(
-                    width: 8.0,
-                  ),
-                  AnimatedContainer(
-                    duration: const Duration(seconds: 3),
-                    curve: Curves.fastOutSlowIn,
-                    height: isExpanded ? 200 : 100,
-                    width: isExpanded ? 150 : 50,
-                    color: isExpanded ? Colors.cyan : Colors.pink,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 8.0,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AnimatedContainer(
-                    duration: const Duration(seconds: 3),
-                    curve: Curves.decelerate,
-                    height: isExpanded ? 200 : 100,
-                    width: isExpanded ? 150 : 50,
-                    color: isExpanded
-                        ? Colors.pinkAccent
-                        : Colors.deepOrangeAccent,
-                  ),
-                  const SizedBox(
-                    width: 8.0,
-                  ),
-                  AnimatedContainer(
-                    duration: const Duration(seconds: 3),
-                    curve: Curves.easeInOutCubicEmphasized,
-                    height: isExpanded ? 200 : 100,
-                    width: isExpanded ? 150 : 50,
-                    color: isExpanded ? Colors.deepOrange : Colors.teal,
-                  ),
-                ],
-              ),
-              FilledButton(
-                onPressed: () {
-                  setState(() {
-                    isExpanded = !isExpanded;
-                    // print('Button Clicked ${isExpanded}');
-                  });
-                },
-                child: Text(isExpanded ? 'Shrink' : 'Expanded'),
-              ),
-              Text(
-                'Animated Controller Assignment',
-                style: GoogleFonts.lato(
-                  color: isExpanded ? Colors.black : Colors.red,
-                  fontSize: isExpanded ? 16 : 24,
-                  decoration: TextDecoration.none,
                 ),
-              ),
-            ],
-          ),
+                const SizedBox(
+                  height: 16.0,
+                ),
+                GestureDetector(
+                  onTap: () => playAudio(audioPath: currentQuestion.audioPath),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      if (isPlaying)
+                        ScaleTransition(
+                          scale: _scaleAnimation,
+                          child: Container(
+                            width: 150,
+                            height: 150,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.green.withOpacity(0.3),
+                            ),
+                          ),
+                        ),
+                      CircleAvatar(
+                        radius: 50,
+                        backgroundColor: Colors.green,
+                        child: Icon(
+                          isPlaying ? Icons.pause : Icons.play_arrow,
+                          size: 45,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 32.0,
+            ),
+            SizedBox(
+              height: 400,
+              child: GridView.builder(
+                  itemCount: currentQuestion.answers.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                  ),
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: ()=> answerQuestion(currentQuestion.answers[index]),
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              radius: 50,
+                              backgroundImage:
+                                  AssetImage(currentQuestion.images[index]),
+                            ),
+                            SizedBox(
+                              height: 8.0,
+                            ),
+                            Text(
+                              currentQuestion.answers[index],
+                              style: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }),
+            ),
+          ],
         ),
       ),
     );

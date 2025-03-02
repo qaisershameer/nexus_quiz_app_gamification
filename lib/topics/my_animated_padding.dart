@@ -8,8 +8,7 @@ class MyAnimatedPadding extends StatefulWidget {
 }
 
 class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
-  double _padding = 4.0;
-  double _padding2 = 8.0;
+  double _padding = 2.0;
 
   @override
   Widget build(BuildContext context) {
@@ -34,39 +33,45 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
           children: [
             // Row Number 01
             Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AnimatedPadding(
-                  padding: EdgeInsets.all(_padding) ,
-                  duration: const Duration(seconds: 4),
+                  curve: Curves.decelerate,
+                  padding: EdgeInsets.all(_padding),
+                  duration: const Duration(seconds: 1),
                   child: Container(
-                    width: 125,
-                    height: 125,
+                    width: 75,
+                    height: 75,
                     color: Colors.deepOrange.shade900,
+                    child: Center(child: Text('01', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
                 const SizedBox(
                   width: 8.0,
                 ),
                 AnimatedPadding(
-                  padding: EdgeInsets.all(_padding) ,
-                  duration: const Duration(seconds: 4),
+                  curve: Curves.easeInCirc,
+                  padding: EdgeInsets.all(_padding),
+                  duration: const Duration(seconds: 1),
                   child: Container(
-                    height: 125,
-                    width: 125,
+                    height: 75,
+                    width: 75,
                     color: Colors.blue,
+                    child: Center(child: Text('02', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
                 const SizedBox(
                   width: 8.0,
                 ),
                 AnimatedPadding(
+                  curve: Curves.easeInCubic,
                   padding: EdgeInsets.all(_padding) ,
-                  duration: const Duration(seconds: 4),
+                  duration: const Duration(seconds: 1),
                   child: Container(
-                    width: 125,
-                    height: 125,
+                    width: 75,
+                    height: 75,
                     color: Colors.red,
+                    child: Center(child: Text('03', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
               ],
@@ -76,15 +81,17 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
             ),
             // Row Number 02
             Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AnimatedPadding(
+                  curve: Curves.elasticIn,
                   padding: EdgeInsets.all(_padding) ,
-                  duration: const Duration(seconds: 4),
+                  duration: const Duration(seconds: 1),
                   child: Container(
-                    width: 125,
-                    height: 125,
+                    width: 75,
+                    height: 75,
                     color: Colors.deepPurple.shade900,
+                    child: Center(child: Text('04', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
                 const SizedBox(
@@ -92,24 +99,27 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
                 ),
                 AnimatedPadding(
                   padding: EdgeInsets.all(_padding) ,
-                  curve: Curves.bounceInOut,
-                  duration: const Duration(seconds: 4),
+                  curve: Curves.elasticInOut,
+                  duration: const Duration(seconds: 1),
                   child: Container(
-                    height: 125,
-                    width: 125,
+                    height: 75,
+                    width: 75,
                     color: Colors.green.shade900,
+                    child: Center(child: Text('05', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
                 const SizedBox(
                   width: 8.0,
                 ),
                 AnimatedPadding(
-                  padding: EdgeInsets.all(_padding) ,
-                  duration: const Duration(seconds: 4),
+                  curve: Curves.bounceInOut,
+                  padding: EdgeInsets.all(_padding),
+                  duration: const Duration(seconds: 1),
                   child: Container(
-                    width: 125,
-                    height: 125,
+                    width: 75,
+                    height: 75,
                     color: Colors.deepPurple.shade900,
+                    child: Center(child: Text('06', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
               ],
@@ -119,39 +129,42 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
             ),
             // Row Number 03
             Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AnimatedPadding(
-                  padding: EdgeInsets.all(_padding) ,
-                  duration: const Duration(seconds: 4),
+                  padding: EdgeInsets.all(_padding),
+                  duration: const Duration(seconds: 1),
                   child: Container(
-                    width: 125,
-                    height: 125,
+                    width: 75,
+                    height: 75,
                     color: Colors.red,
+                    child: Center(child: Text('07', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
                 const SizedBox(
                   width: 8.0,
                 ),
                 AnimatedPadding(
-                  padding: EdgeInsets.all(_padding) ,
-                  duration: const Duration(seconds: 4),
+                  padding: EdgeInsets.all(_padding),
+                  duration: const Duration(seconds: 1),
                   child: Container(
-                    height: 125,
-                    width: 125,
+                    height: 75,
+                    width: 75,
                     color: Colors.blue,
+                    child: Center(child: Text('08', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
                 const SizedBox(
                   width: 8.0,
                 ),
                 AnimatedPadding(
-                  padding: EdgeInsets.all(_padding) ,
-                  duration: const Duration(seconds: 4),
+                  padding: EdgeInsets.all(_padding),
+                  duration: const Duration(seconds: 1),
                   child: Container(
-                    width: 125,
-                    height: 125,
+                    width: 75,
+                    height: 75,
                     color: Colors.deepOrange.shade900,
+                    child: Center(child: Text('09', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
               ],
@@ -159,7 +172,7 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
             FilledButton(
                 onPressed: () {
                   setState(() {
-                    _padding = _padding == 10.0 ? 0.0 : 1.0;
+                    _padding = _padding == 2.0 ? 24.0 : 2.0;
                   });
                 },
                 child: const Text('Change'))
