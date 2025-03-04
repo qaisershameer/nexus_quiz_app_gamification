@@ -12,7 +12,8 @@ class QuestionScreen extends StatefulWidget {
   State<QuestionScreen> createState() => _QuestionScreenState();
 }
 
-class _QuestionScreenState extends State<QuestionScreen> with SingleTickerProviderStateMixin {
+class _QuestionScreenState extends State<QuestionScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
   int currentQuestionIndex = 0;
@@ -38,7 +39,6 @@ class _QuestionScreenState extends State<QuestionScreen> with SingleTickerProvid
     _audioPlayer.dispose();
     _controller.dispose();
     super.dispose();
-
   }
 
   void playAudio({required String audioPath}) async {
@@ -59,27 +59,29 @@ class _QuestionScreenState extends State<QuestionScreen> with SingleTickerProvid
           isPlaying = true;
         });
 
-        _audioPlayer.onPlayerComplete.listen((event){
+        _audioPlayer.onPlayerComplete.listen((event) {
           _controller.stop();
           setState(() {
             isPlaying = false;
           });
         });
-
       } catch (e) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text('Cannot Playing Audio.')));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            duration: Duration(microseconds: 800),
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.red,
+            content: Text('Cannot Playing Audio.')));
         print(e);
       }
     }
   }
 
   void answerQuestion(String selectedAnswer) {
-    widget.onSelectAnswer(selectedAnswer); 
-    if(currentQuestionIndex < questions.length-1) {
+    widget.onSelectAnswer(selectedAnswer);
+    if (currentQuestionIndex < questions.length - 1) {
       setState(() {
-      currentQuestionIndex++;
-    });
+        currentQuestionIndex++;
+      });
     }
   }
 
@@ -153,14 +155,15 @@ class _QuestionScreenState extends State<QuestionScreen> with SingleTickerProvid
               height: 400,
               child: GridView.builder(
                   itemCount: currentQuestion.answers.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 16,
                     mainAxisSpacing: 16,
                   ),
                   itemBuilder: (context, index) {
                     return GestureDetector(
-                      onTap: ()=> answerQuestion(currentQuestion.answers[index]),
+                      onTap: () =>
+                          answerQuestion(currentQuestion.answers[index]),
                       child: Container(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -170,7 +173,7 @@ class _QuestionScreenState extends State<QuestionScreen> with SingleTickerProvid
                               backgroundImage:
                                   AssetImage(currentQuestion.images[index]),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 8.0,
                             ),
                             Text(

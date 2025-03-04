@@ -38,6 +38,7 @@ class _MyAppState extends State<MyApp> {
 
   void chooseAnswers(String answer){
     selectedAnswers.add(answer);
+    print(selectedAnswers);
     if(selectedAnswers.length == questions.length){
       setState(() {
         activeScreen = 'result-screen';
@@ -63,11 +64,11 @@ class _MyAppState extends State<MyApp> {
     }
 
     if (activeScreen == 'result-screen') {
-      screenWidget = ResultScreen(onRestart: restartQuiz);
+      screenWidget = ResultScreen(onRestart: restartQuiz, chosenAnswers: selectedAnswers,);
     }
 
     if (activeScreen == 'grid-screen') {
-      screenWidget = MyGridView();
+      screenWidget = const MyGridView();
     }
 
     if (activeScreen == 'grid-screen-products') {
@@ -75,15 +76,15 @@ class _MyAppState extends State<MyApp> {
     }
 
     if (activeScreen == 'list-screen') {
-      screenWidget = MyListView();
+      screenWidget = const MyListView();
     }
 
     if (activeScreen == 'list-screen-separated') {
-      screenWidget = MyListViewSeparated();
+      screenWidget = const MyListViewSeparated();
     }
 
     if (activeScreen == 'list-screen-users') {
-      screenWidget = MyListViewUsers();
+      screenWidget = const MyListViewUsers();
     }
 
     return MaterialApp(
