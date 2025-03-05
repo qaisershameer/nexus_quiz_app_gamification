@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../custom_widgets/my_result_summary.dart';
 import '../data/question_data.dart';
-import '../custom_widgets/my_app_button.dart';
+
+import '../custom_widgets/my_app_button_icon.dart';
+import '../custom_widgets/my_app_button_filled.dart';
 
 class ResultScreen extends StatelessWidget {
   const ResultScreen(
@@ -56,22 +58,75 @@ class ResultScreen extends StatelessWidget {
                 ),
               ),
 
-
-              const SingleChildScrollView(child: Column(
+              const SingleChildScrollView(
+                  child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
                   // ResultSummary(summaryData),
                   // Text(summaryData.toString()),
-
                 ],
               )),
 
               const SizedBox(
-                height: 16.0,
+                height: 8.0,
               ),
 
-              MyAppButton(myOnPressed: onRestart, buttonText: 'Restart Quiz',),
+              // Using Custom Widget MyAppButtonIcon 01
+              MyAppButtonIcon(
+                myOnPressed: onRestart,
+                buttonText: 'RESTART QUIZ',
+              ),
+
+              const SizedBox(
+                height: 8.0,
+              ),
+              // Using Custom Widget MyAppButtonIcon 02
+              MyAppButtonIcon(
+                myOnPressed: onRestart,
+                buttonText: 'HOME SCREEN',
+              ),
+
+              const SizedBox(
+                height: 8.0,
+              ),
+              // Using Custom Widget MyAppButtonIcon 03
+              MyAppButtonIcon(
+                myOnPressed: onRestart,
+                buttonText: 'START QUIZ',
+              ),
+
+              const SizedBox(
+                height: 8.0,
+              ),
+              // Using Custom Widget MyAppButtonIcon 01
+              MyAppButtonFilled(
+                myOnPressed: onRestart,
+                buttonText: 'RESTART',
+                buttonHeight: 140,
+                buttonWidth: 40,
+              ),
+
+              const SizedBox(
+                height: 8.0,
+              ),
+              // Using Custom Widget MyAppButtonIcon 02
+              MyAppButtonFilled(
+                myOnPressed: onRestart,
+                buttonText: 'HOME',
+                buttonHeight: 150,
+                buttonWidth: 50,
+              ),
+
+              const SizedBox(
+                height: 8.0,
+              ),
+              // Using Custom Widget MyAppButtonIcon 03
+              MyAppButtonFilled(
+                myOnPressed: onRestart,
+                buttonText: 'LOG OUT',
+                buttonHeight: 160,
+                buttonWidth: 60,
+              ),
             ],
           ),
         ),
@@ -79,4 +134,3 @@ class ResultScreen extends StatelessWidget {
     );
   }
 }
-
