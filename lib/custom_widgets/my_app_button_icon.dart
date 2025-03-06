@@ -6,15 +6,17 @@ class MyAppButtonIcon extends StatelessWidget {
     super.key,
     required this.myOnPressed,
     required this.buttonText,
+    required this.buttonIcon,
   });
 
   final void Function() myOnPressed;
   final String buttonText;
+  final Icon buttonIcon;
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton.icon(
-      icon: const Icon(Icons.arrow_forward),
+      icon: buttonIcon,
       style: OutlinedButton.styleFrom(
         foregroundColor: Colors.white,
       ),

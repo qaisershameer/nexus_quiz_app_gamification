@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'data/question_data.dart';
+// QUIZ SCREENS
+import '../data/question_data.dart';
 import '../screens/start_screen.dart';
 import '../screens/question_screen.dart';
 import '../screens/result_screen.dart';
 
-// import '../topics/my_animated_padding.dart';
-// import '../topics/my_animated_position.dart';
-// import '../topics/my_animated_opacity.dart';
-// import '../topics/my_animated_controller.dart';
+// TOPICS // ANIMATIONS SCREENS
+import '../topics/my_animated_padding.dart';
+import '../topics/my_animated_position.dart';
+import '../topics/my_animated_opacity.dart';
+import '../topics/my_animated_controller.dart';
+
+// TOPICS // GRID VIEW SCREENS
 import '../topics/my_grid_view.dart';
 import '../topics/my_grid_view_products.dart';
+
+// TOPICS // LIST VIEW SCREENS
 import '../topics/my_list_view.dart';
 import '../topics/my_list_view_users.dart';
 import '../topics/my_list_view_separated.dart';
@@ -38,7 +44,7 @@ class _MyAppState extends State<MyApp> {
 
   void chooseAnswers(String answer){
     selectedAnswers.add(answer);
-    print(selectedAnswers);
+    // print(selectedAnswers);
     if(selectedAnswers.length == questions.length){
       setState(() {
         activeScreen = 'result-screen';
@@ -59,6 +65,7 @@ class _MyAppState extends State<MyApp> {
       startQuiz: switchScreen,
     );
 
+    // QUIZ SCREENS
     if (activeScreen == 'question-screen') {
       screenWidget = QuestionScreen(onSelectAnswer: chooseAnswers,);
     }
@@ -67,6 +74,24 @@ class _MyAppState extends State<MyApp> {
       screenWidget = ResultScreen(onRestart: restartQuiz, chosenAnswers: selectedAnswers,);
     }
 
+    // TOPICS // ANIMATIONS SCREENS
+    if (activeScreen == 'animated-controller') {
+      screenWidget = const MyAnimatedController();
+    }
+
+    if (activeScreen == 'animated-opacity') {
+      screenWidget = const MyAnimatedOpacity();
+    }
+
+    if (activeScreen == 'animated-padding') {
+      screenWidget = const MyAnimatedPadding();
+    }
+
+    if (activeScreen == 'animated-position') {
+      screenWidget = const MyAnimatedPosition();
+    }
+
+    // TOPICS // GRID VIEW SCREENS
     if (activeScreen == 'grid-screen') {
       screenWidget = const MyGridView();
     }
@@ -75,6 +100,7 @@ class _MyAppState extends State<MyApp> {
       screenWidget = const MyGridViewProducts();
     }
 
+    // TOPICS // LIST VIEW SCREENS
     if (activeScreen == 'list-screen') {
       screenWidget = const MyListView();
     }
@@ -95,15 +121,6 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       home: screenWidget,
-      // home: const MyAnimatedController(),
-      // home: const MyAnimatedOpacity(),
-      // home: const MyAnimatedPadding(),
-      // home: const MyAnimatedPosition(),
-      // home: const MyGridView(),
-      // home: const MyGridViewProducts(),
-      // home: const MyListView(),
-      // home: const MyListViewUsers(),
-      // home: const MyListViewSeparated(),
     );
   }
 }
