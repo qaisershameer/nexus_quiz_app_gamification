@@ -71,7 +71,7 @@ class _QuestionScreenState extends State<QuestionScreen>
             behavior: SnackBarBehavior.floating,
             backgroundColor: Colors.red,
             content: Text('Cannot Playing Audio.')));
-        print(e);
+        // print(e);
       }
     }
   }
@@ -106,6 +106,19 @@ class _QuestionScreenState extends State<QuestionScreen>
             Column(
               children: [
                 Text(
+                  'QUESTION # ${currentQuestionIndex+1}',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.lato(
+                    color: Colors.green.shade900,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.none,
+                  ),
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                Text(
                   currentQuestion.text,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
@@ -115,7 +128,7 @@ class _QuestionScreenState extends State<QuestionScreen>
                   ),
                 ),
                 const SizedBox(
-                  height: 16.0,
+                  height: 8.0,
                 ),
                 GestureDetector(
                   onTap: () => playAudio(audioPath: currentQuestion.audioPath),
@@ -149,7 +162,7 @@ class _QuestionScreenState extends State<QuestionScreen>
               ],
             ),
             const SizedBox(
-              height: 32.0,
+              height: 24.0,
             ),
             SizedBox(
               height: 400,
