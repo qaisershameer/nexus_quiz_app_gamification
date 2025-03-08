@@ -6,6 +6,7 @@ import '../screens/start_screen.dart';
 import '../screens/question_screen.dart';
 import '../screens/result_screen.dart';
 
+import 'package:nexus_quiz_app/screens/topic_screen.dart';
 // TOPICS // ANIMATIONS SCREENS
 import '../topics/my_animated_padding.dart';
 import '../topics/my_animated_position.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String activeScreen = 'start-screen';
   List<String> selectedAnswers = [];
+  // int topicNumber = 0;
 
   void switchScreen() {
     setState(() {
@@ -42,10 +44,10 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  void chooseAnswers(String answer){
+  void chooseAnswers(String answer) {
     selectedAnswers.add(answer);
     // print(selectedAnswers);
-    if(selectedAnswers.length == questions.length){
+    if (selectedAnswers.length == questions.length) {
       setState(() {
         activeScreen = 'result-screen';
       });
@@ -59,58 +61,113 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void switchTopicScreen() {
+    setState(() {
+      activeScreen = 'topic-screen';
+    });
+  }
+
+  void topicScreen(int topicNumber) {
+    setState(() {
+      // this.topicNumber = topicNumber;
+      switch (topicNumber) {
+        case 0:
+          activeScreen = 'topic-screen';
+          break;
+        case 1:
+          activeScreen = 'animated-controller';
+          break;
+        case 2:
+          activeScreen = 'animated-opacity';
+          break;
+        case 3:
+          activeScreen = 'animated-padding';
+          break;
+        case 4:
+          activeScreen = 'animated-position';
+          break;
+        case 5:
+          activeScreen = 'grid-screen';
+          break;
+        case 6:
+          activeScreen = 'grid-screen-products';
+          break;
+        case 7:
+          activeScreen = 'list-screen';
+          break;
+        case 8:
+          activeScreen = 'list-screen-separated';
+          break;
+        case 9:
+          activeScreen = 'list-screen-users';
+          break;
+        default:
+          activeScreen = 'start-screen';
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget screenWidget = StartScreen(
       startQuiz: switchScreen,
+      startTopics: () => topicScreen(0),
     );
 
     // QUIZ SCREENS
     if (activeScreen == 'question-screen') {
-      screenWidget = QuestionScreen(onSelectAnswer: chooseAnswers,);
+      screenWidget = QuestionScreen(onSelectAnswer: chooseAnswers, home: restartQuiz,);
     }
 
     if (activeScreen == 'result-screen') {
-      screenWidget = ResultScreen(onRestart: restartQuiz, chosenAnswers: selectedAnswers,);
+      screenWidget = ResultScreen(
+        onRestart: restartQuiz,
+        chosenAnswers: selectedAnswers,
+      );
     }
 
-    // TOPICS // ANIMATIONS SCREENS
+    // // TOPICS // ANIMATIONS SCREENS
+
+    if (activeScreen == 'topic-screen') {
+      screenWidget = TopicScreen(onSelectTopic: topicScreen);
+    }
+
     if (activeScreen == 'animated-controller') {
-      screenWidget = const MyAnimatedController();
+      screenWidget = MyAnimatedController(home: restartQuiz, topics: () => topicScreen(0),);
     }
 
     if (activeScreen == 'animated-opacity') {
-      screenWidget = const MyAnimatedOpacity();
+      screenWidget = MyAnimatedOpacity(home: restartQuiz, topics: () => topicScreen(0),);
     }
 
     if (activeScreen == 'animated-padding') {
-      screenWidget = const MyAnimatedPadding();
+      screenWidget = MyAnimatedPadding(home: restartQuiz, topics: () => topicScreen(0),);
     }
 
     if (activeScreen == 'animated-position') {
-      screenWidget = const MyAnimatedPosition();
+      screenWidget = MyAnimatedPosition(home: restartQuiz, topics: () => topicScreen(0),);
     }
 
     // TOPICS // GRID VIEW SCREENS
     if (activeScreen == 'grid-screen') {
-      screenWidget = const MyGridView();
+      screenWidget = MyGridView(home: restartQuiz, topics: () => topicScreen(0),);
     }
 
     if (activeScreen == 'grid-screen-products') {
-      screenWidget = const MyGridViewProducts();
+      screenWidget = MyGridViewProducts(home: restartQuiz, topics: () => topicScreen(0),);
     }
 
     // TOPICS // LIST VIEW SCREENS
     if (activeScreen == 'list-screen') {
-      screenWidget = const MyListView();
+      screenWidget = MyListView(home: restartQuiz, topics: () => topicScreen(0),);
     }
 
     if (activeScreen == 'list-screen-separated') {
-      screenWidget = const MyListViewSeparated();
+      screenWidget = MyListViewSeparated(home: restartQuiz, topics: () => topicScreen(0),);
     }
 
     if (activeScreen == 'list-screen-users') {
-      screenWidget = const MyListViewUsers();
+      screenWidget = MyListViewUsers(home: restartQuiz, topics: () => topicScreen(0),);
     }
 
     return MaterialApp(

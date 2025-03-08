@@ -158,15 +158,15 @@ const List<QuizQuestion> questions = [
   // Question 11: Dog Sound (assuming it's available)
   QuizQuestion(
       'What animal makes this sound?',
-      ['Cat', 'Dog', 'Bear', 'Lion'],
+      ['Sparrow', 'Parrot', 'Rabbit', 'Squirrel'],
       [
-        'assets/images/animals/cat.jpg',
-        'assets/images/animals/dog.jpg',
-        'assets/images/animals/bear.jpg',
-        'assets/images/animals/lion.jpg'
+        "assets/images/animals/sparrow.jpg",
+        'assets/images/animals/parrot.jpg',
+        'assets/images/animals/rabbit.jpg',
+        'assets/images/animals/squirrel.jpg'
       ],
-      'sound/dog.mp3',
-      'Dog'),
+      'sound/parrot.mp3',
+      'Parrot'),
 
   // Question 12: Lion Sound
   QuizQuestion(

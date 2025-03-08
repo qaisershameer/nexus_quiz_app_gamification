@@ -3,7 +3,9 @@ import 'package:nexus_quiz_app/data/bank_data.dart';
 import '../models/bank_model.dart';
 
 class MyListView extends StatefulWidget {
-  const MyListView({super.key});
+  const MyListView({super.key, required this.home, required this.topics});
+  final void Function() home;
+  final Function() topics;
 
   @override
   State<MyListView> createState() => _MyListViewState();
@@ -16,12 +18,25 @@ class _MyListViewState extends State<MyListView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('List View Builder'),
+        title: const Text('List View Builder'),
         backgroundColor: Colors.orange.shade200,
+        actions: [
+          IconButton(
+            onPressed: widget.topics,
+            icon: const Icon(Icons.ac_unit,size: 35,color: Colors.black,
+            ),
+          ),
+          IconButton(
+            onPressed: widget.home,
+            icon: const Icon(Icons.home,size: 35,color: Colors.black,
+            ),
+          ),
+          const SizedBox(width: 8,),
+        ],
       ),
       body: Column(
         children: [
-          Text('List View Builder'),
+          const Text('List View Builder'),
           SizedBox(
             height: 120,
             child: ListView.builder(
@@ -37,7 +52,7 @@ class _MyListViewState extends State<MyListView> {
                 return Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.symmetric(
+                      margin: const EdgeInsets.symmetric(
                         horizontal: 8.0,
                         vertical: 8.0,
                       ),
@@ -61,7 +76,7 @@ class _MyListViewState extends State<MyListView> {
                     Center(
                       child: Text(
                         bank.bankName,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),
@@ -78,7 +93,7 @@ class _MyListViewState extends State<MyListView> {
               scrollDirection: Axis.vertical,
               // reverse: true,
               shrinkWrap: true,
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               itemBuilder: (context, index) {
 
                 // Access the bank data from the 'banks' list
@@ -87,14 +102,14 @@ class _MyListViewState extends State<MyListView> {
                 return Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.symmetric(
+                      margin: const EdgeInsets.symmetric(
                         horizontal: 8.0,
                         vertical: 8.0,
                       ),
                       height: 100,
                       width: MediaQuery.sizeOf(context).width,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(70),
                             bottomRight: Radius.circular(70)),
                         color: index.isEven
@@ -106,7 +121,7 @@ class _MyListViewState extends State<MyListView> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            margin: EdgeInsets.symmetric(
+                            margin: const EdgeInsets.symmetric(
                               horizontal: 24.0,
                             ),
                             child: ClipOval(
@@ -120,7 +135,7 @@ class _MyListViewState extends State<MyListView> {
                           ),
                           Text(
                             bank.bankName,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),

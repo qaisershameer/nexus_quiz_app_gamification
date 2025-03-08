@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import '../custom_widgets/my_app_button_filled.dart';
+import '../custom_widgets/my_app_button_icon.dart';
 
 class MyAnimatedOpacity extends StatefulWidget {
-  const MyAnimatedOpacity({super.key});
+  const MyAnimatedOpacity({super.key, required this.home, required this.topics});
+  final void Function() home;
+  final Function() topics;
 
   @override
   State<MyAnimatedOpacity> createState() => _MyAnimatedOpacityState();
@@ -15,8 +19,21 @@ class _MyAnimatedOpacityState extends State<MyAnimatedOpacity> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Animations : Animated Opacity'),
+        title: const Text('Animated Opacity'),
         backgroundColor: Colors.orange.shade200,
+        actions: [
+          IconButton(
+            onPressed: widget.topics,
+            icon: const Icon(Icons.ac_unit,size: 35,color: Colors.black,
+            ),
+          ),
+          IconButton(
+            onPressed: widget.home,
+            icon: const Icon(Icons.home,size: 35,color: Colors.black,
+            ),
+          ),
+          const SizedBox(width: 8,),
+        ],
       ),
       body: Container(
         width: MediaQuery.sizeOf(context).width,
@@ -156,14 +173,25 @@ class _MyAnimatedOpacityState extends State<MyAnimatedOpacity> {
                 ),
               ],
             ),
-            FilledButton(
-                onPressed: () {
-                  setState(() {
-                    _opacity = _opacity == 1.0 ? 0.0 : 1.0;
-                    _opacity2 = _opacity2 == 0.0 ? 1.0 : 0.0;
-                  });
-                },
-                child: const Text('Change'))
+
+            const SizedBox(height: 16.0,),
+
+            MyAppButtonFilled(
+              myOnPressed: () {
+                setState(() {
+                  _opacity = _opacity == 1.0 ? 0.0 : 1.0;
+                  _opacity2 = _opacity2 == 0.0 ? 1.0 : 0.0;
+                });
+              },
+              buttonText: 'Change Opacity',
+              buttonHeight: 45,
+              buttonWidth: 160,
+            ),
+
+            const SizedBox(height: 16.0,),
+
+            MyAppButtonIcon(myOnPressed: widget.topics, buttonText: 'Learn More Widgets', buttonIcon: const Icon(Icons.ac_unit)),
+
           ],
         ),
       ),

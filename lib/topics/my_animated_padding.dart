@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import '../custom_widgets/my_app_button_filled.dart';
+import '../custom_widgets/my_app_button_icon.dart';
 
 class MyAnimatedPadding extends StatefulWidget {
-  const MyAnimatedPadding({super.key});
+  const MyAnimatedPadding({super.key, required this.home, required this.topics});
+  final void Function() home;
+  final Function() topics;
 
   @override
   State<MyAnimatedPadding> createState() => _MyAnimatedPaddingState();
@@ -14,8 +18,21 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Animations : Animated padding'),
+        title: const Text('Animated padding'),
         backgroundColor: Colors.orange.shade200,
+        actions: [
+          IconButton(
+            onPressed: widget.topics,
+            icon: const Icon(Icons.ac_unit,size: 35,color: Colors.black,
+            ),
+          ),
+          IconButton(
+            onPressed: widget.home,
+            icon: const Icon(Icons.home,size: 35,color: Colors.black,
+            ),
+          ),
+          const SizedBox(width: 8,),
+        ],
       ),
       body: Container(
         width: MediaQuery.sizeOf(context).width,
@@ -43,7 +60,7 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
                     width: 75,
                     height: 75,
                     color: Colors.deepOrange.shade900,
-                    child: Center(child: Text('01', style: TextStyle(color: Colors.white, fontSize: 36),)),
+                    child: const Center(child: Text('01', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
                 const SizedBox(
@@ -57,7 +74,7 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
                     height: 75,
                     width: 75,
                     color: Colors.blue,
-                    child: Center(child: Text('02', style: TextStyle(color: Colors.white, fontSize: 36),)),
+                    child: const Center(child: Text('02', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
                 const SizedBox(
@@ -71,7 +88,7 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
                     width: 75,
                     height: 75,
                     color: Colors.red,
-                    child: Center(child: Text('03', style: TextStyle(color: Colors.white, fontSize: 36),)),
+                    child: const Center(child: Text('03', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
               ],
@@ -91,7 +108,7 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
                     width: 75,
                     height: 75,
                     color: Colors.deepPurple.shade900,
-                    child: Center(child: Text('04', style: TextStyle(color: Colors.white, fontSize: 36),)),
+                    child: const Center(child: Text('04', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
                 const SizedBox(
@@ -105,7 +122,7 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
                     height: 75,
                     width: 75,
                     color: Colors.green.shade900,
-                    child: Center(child: Text('05', style: TextStyle(color: Colors.white, fontSize: 36),)),
+                    child: const Center(child: Text('05', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
                 const SizedBox(
@@ -119,7 +136,7 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
                     width: 75,
                     height: 75,
                     color: Colors.deepPurple.shade900,
-                    child: Center(child: Text('06', style: TextStyle(color: Colors.white, fontSize: 36),)),
+                    child: const Center(child: Text('06', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
               ],
@@ -138,7 +155,7 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
                     width: 75,
                     height: 75,
                     color: Colors.red,
-                    child: Center(child: Text('07', style: TextStyle(color: Colors.white, fontSize: 36),)),
+                    child: const Center(child: Text('07', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
                 const SizedBox(
@@ -151,7 +168,7 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
                     height: 75,
                     width: 75,
                     color: Colors.blue,
-                    child: Center(child: Text('08', style: TextStyle(color: Colors.white, fontSize: 36),)),
+                    child: const Center(child: Text('08', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
                 const SizedBox(
@@ -164,18 +181,29 @@ class _MyAnimatedPaddingState extends State<MyAnimatedPadding> {
                     width: 75,
                     height: 75,
                     color: Colors.deepOrange.shade900,
-                    child: Center(child: Text('09', style: TextStyle(color: Colors.white, fontSize: 36),)),
+                    child: const Center(child: Text('09', style: TextStyle(color: Colors.white, fontSize: 36),)),
                   ),
                 ),
               ],
             ),
-            FilledButton(
-                onPressed: () {
-                  setState(() {
-                    _padding = _padding == 2.0 ? 24.0 : 2.0;
-                  });
-                },
-                child: const Text('Change'))
+
+            const SizedBox(height: 16.0,),
+
+            MyAppButtonFilled(
+              myOnPressed: () {
+                setState(() {
+                  _padding = _padding == 2.0 ? 24.0 : 2.0;
+                });
+              },
+              buttonText: 'Change Padding',
+              buttonHeight: 45,
+              buttonWidth: 160,
+            ),
+
+            const SizedBox(height: 16.0,),
+
+            MyAppButtonIcon(myOnPressed: widget.topics, buttonText: 'Learn More Widgets', buttonIcon: const Icon(Icons.ac_unit)),
+
           ],
         ),
       ),

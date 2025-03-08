@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import '../custom_widgets/my_app_button_filled.dart';
 
 class MyGridView extends StatefulWidget {
-  const MyGridView({super.key});
+  const MyGridView({super.key, required this.home, required this.topics});
+  final void Function() home;
+  final Function() topics;
 
   @override
   State<MyGridView> createState() => _MyGridViewState();
@@ -18,6 +21,20 @@ class _MyGridViewState extends State<MyGridView> {
       appBar: AppBar(
         title: const Text('Grid View : Count Layout'),
         backgroundColor: Colors.deepPurple.shade200,
+        actions: [
+          IconButton(
+            onPressed: widget.topics,
+            icon: const Icon(Icons.ac_unit,size: 35,color: Colors.black,
+            ),
+          ),
+          IconButton(
+            onPressed: widget.home,
+            icon: const Icon(Icons.home,size: 35,color: Colors.black,
+            ),
+          ),
+
+          const SizedBox(width: 8,),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -27,7 +44,7 @@ class _MyGridViewState extends State<MyGridView> {
             const Text(
               'GRID VIEW : COUNT MODE',
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -51,13 +68,13 @@ class _MyGridViewState extends State<MyGridView> {
               ],
             ),
 
-            const SizedBox(height: 16.0,),
+            const SizedBox(height: 8.0,),
 
             // Total Screen Width / Extent Pixels Property
             const Text(
               'GRID VIEW : EXTENT MODE',
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -80,13 +97,13 @@ class _MyGridViewState extends State<MyGridView> {
               ],
             ),
 
-            const SizedBox(height: 16.0,),
+            const SizedBox(height: 8.0,),
 
             // GRID VIEW BUILDER : used to represent dynamic data load.
             const Text(
               'GRID VIEW : BUILDER MODE',
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -101,7 +118,16 @@ class _MyGridViewState extends State<MyGridView> {
                 child: Center(child: Text(index.toString(), style: const TextStyle(color: Colors.white, fontSize: 18,),),),);
               },
             ),
-            
+
+            const SizedBox(height: 8.0,),
+
+            MyAppButtonFilled(
+              myOnPressed: widget.topics,
+              buttonText: 'Learn More Widgets',
+              buttonHeight: 45,
+              buttonWidth: 160,
+            ),
+
           ],
         ),
       ),

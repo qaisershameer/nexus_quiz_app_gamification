@@ -5,8 +5,9 @@ import 'package:nexus_quiz_app/data/question_data.dart';
 import 'package:nexus_quiz_app/models/question_model.dart';
 
 class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({super.key, required this.onSelectAnswer});
+  const QuestionScreen({super.key, required this.onSelectAnswer, required this.home,});
   final void Function(String answer) onSelectAnswer;
+  final void Function() home;
 
   @override
   State<QuestionScreen> createState() => _QuestionScreenState();
@@ -90,6 +91,19 @@ class _QuestionScreenState extends State<QuestionScreen>
     final QuizQuestion currentQuestion = questions[currentQuestionIndex];
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Quiz Gamification App'),
+        centerTitle: true,
+        backgroundColor: Colors.green.shade800,
+        actions: [
+          IconButton(
+            onPressed: widget.home,
+            icon: const Icon(Icons.home,size: 35,color: Colors.black,
+            ),
+          ),
+          const SizedBox(width: 8,),
+        ],
+      ),
       body: Container(
         width: MediaQuery.sizeOf(context).width,
         // height: MediaQuery.sizeOf(context).height,
@@ -106,7 +120,7 @@ class _QuestionScreenState extends State<QuestionScreen>
             Column(
               children: [
                 Text(
-                  'QUESTION # ${currentQuestionIndex+1}',
+                  'QUESTION # ${currentQuestionIndex + 1}',
                   textAlign: TextAlign.center,
                   style: GoogleFonts.lato(
                     color: Colors.green.shade900,

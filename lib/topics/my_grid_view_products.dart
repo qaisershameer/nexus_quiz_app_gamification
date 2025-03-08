@@ -4,7 +4,9 @@ import '../data/product_data.dart';
 import '../models/product_model.dart';
 
 class MyGridViewProducts extends StatefulWidget {
-  const MyGridViewProducts({super.key});
+  const MyGridViewProducts({super.key, required this.home, required this.topics});
+  final void Function() home;
+  final Function() topics;
 
   @override
   State<MyGridViewProducts> createState() => _MyGridViewProductsState();
@@ -16,11 +18,23 @@ class _MyGridViewProductsState extends State<MyGridViewProducts> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Grid View : BUILDER LAYOUT',
+          'Grid View Builder Layout',
           style: GoogleFonts.lato(),
         ),
         backgroundColor: Colors.deepPurple.shade200,
-        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: widget.topics,
+            icon: const Icon(Icons.ac_unit,size: 35,color: Colors.black,
+            ),
+          ),
+          IconButton(
+            onPressed: widget.home,
+            icon: const Icon(Icons.home,size: 35,color: Colors.black,
+            ),
+          ),
+          const SizedBox(width: 8,),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

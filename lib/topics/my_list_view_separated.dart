@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MyListViewSeparated extends StatefulWidget {
-  const MyListViewSeparated({super.key});
+  const MyListViewSeparated({super.key, required this.home, required this.topics});
+  final void Function() home;
+  final Function() topics;
   @override
   State<MyListViewSeparated> createState() => _MyListViewSeparatedState();
 }
@@ -14,6 +16,19 @@ class _MyListViewSeparatedState extends State<MyListViewSeparated> {
       appBar: AppBar(
         title: const Text('List View Separated'),
         backgroundColor: Colors.orange.shade200,
+        actions: [
+          IconButton(
+            onPressed: widget.topics,
+            icon: const Icon(Icons.ac_unit,size: 35,color: Colors.black,
+            ),
+          ),
+          IconButton(
+            onPressed: widget.home,
+            icon: const Icon(Icons.home,size: 35,color: Colors.black,
+            ),
+          ),
+          const SizedBox(width: 8,),
+        ],
       ),
       body: ListView.separated(
         itemCount: names.length,

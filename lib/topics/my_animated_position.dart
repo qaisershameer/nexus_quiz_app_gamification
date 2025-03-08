@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class MyAnimatedPosition extends StatefulWidget {
-  const MyAnimatedPosition({super.key});
+  const MyAnimatedPosition({super.key, required this.home, required this.topics});
+  final void Function() home;
+  final Function() topics;
 
   @override
   State<MyAnimatedPosition> createState() => _MyAnimatedPositionState();
@@ -31,12 +33,26 @@ class _MyAnimatedPositionState extends State<MyAnimatedPosition> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Animation: Animated Positioned'),
+        title: const Text('Animated Positioned'),
         backgroundColor: Colors.orange.shade200,
+        actions: [
+          IconButton(
+            onPressed: widget.topics,
+            icon: const Icon(Icons.ac_unit,size: 35,color: Colors.black,
+            ),
+          ),
+          IconButton(
+            onPressed: widget.topics,
+            icon: const Icon(Icons.home,size: 35,color: Colors.black,
+            ),
+          ),
+          const SizedBox(width: 8,),
+        ],
       ),
       body: Center(
         child: Container(
-          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(4.0),
           width: MediaQuery.of(context).size.width, // Full screen width
           height: MediaQuery.of(context).size.height, // Full screen height
           decoration: BoxDecoration(
@@ -64,7 +80,7 @@ class _MyAnimatedPositionState extends State<MyAnimatedPosition> {
                   child: Center(
                     child: Text(
                       '${index + 1}', // Display 1 to 12
-                      style: TextStyle(color: Colors.white, fontSize: 24),
+                      style: const TextStyle(color: Colors.white, fontSize: 24),
                     ),
                   ),
                 ),
@@ -82,6 +98,7 @@ class _MyAnimatedPositionState extends State<MyAnimatedPosition> {
             style: TextStyle(fontSize: 20),
           ),
         ),
+
       ),
     );
   }

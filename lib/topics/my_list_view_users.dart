@@ -4,7 +4,9 @@ import '../data/user_data.dart';
 import '../models/user_model.dart';
 
 class MyListViewUsers extends StatefulWidget {
-  const MyListViewUsers({super.key});
+  const MyListViewUsers({super.key, required this.home, required this.topics});
+  final void Function() home;
+  final Function() topics;
 
   @override
   State<MyListViewUsers> createState() => _MyListViewUsersState();
@@ -17,6 +19,19 @@ class _MyListViewUsersState extends State<MyListViewUsers> {
       appBar: AppBar(
         title: const Text('List View Builder'),
         backgroundColor: Colors.orange.shade200,
+        actions: [
+          IconButton(
+            onPressed: widget.topics,
+            icon: const Icon(Icons.ac_unit,size: 35,color: Colors.black,
+            ),
+          ),
+          IconButton(
+            onPressed: widget.home,
+            icon: const Icon(Icons.home,size: 35,color: Colors.black,
+            ),
+          ),
+          const SizedBox(width: 8,),
+        ],
       ),
       body: Column(
         children: [
